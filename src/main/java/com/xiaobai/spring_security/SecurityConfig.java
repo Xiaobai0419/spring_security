@@ -15,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .anyRequest().authenticated()//这里会导致loginPage也无法访问，那么只能在最后加上permitAll，但这样又会导致下面的hasRole权限配置都不生效，验证后无需拥有对应Role就可访问这些页面，所以这里注释掉！
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/success/**").hasRole("USER")
-                .antMatchers("/success1/**").hasRole("USER1")//经测试，这里如果不规定权限，这个相应页面可以在无登录授权下直接访问！
+                .antMatchers("/success1/**").hasRole("USER1")//经测试，这里如果不规定权限，这个相应页面可以在上面.anyRequest().authenticated()注释掉的情况下，无登录授权下直接访问！
                 .and()
                 .formLogin()
                 .loginPage("/login");//经测试，首页无论以项目根路径或index.jsp访问，都是无需登录验证即可访问，且登录后默认跳转到根路径，即首页！
