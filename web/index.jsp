@@ -18,10 +18,19 @@
         Hello <b><c:out value="${pageContext.request.remoteUser}"/></b>
     </p>
     <c:url var="logoutUrl" value="/logout"/>
-    <form class="form-inline" action="${logoutUrl}" method="post"><!-- 简单的jstl表达式，上面c:url标签将"/logout"赋值给jsp页面变量logoutUrl，下面的action使用EL表达式取这个值，基础生疏反应缓慢，需要全面复习补充！！-->
+    <form class="form-inline" action="${logoutUrl}" method="post"><!-- 简单的jstl表达式，上面c:url标签将"/logout"（根据官网，这是默认log out url）赋值给jsp页面变量logoutUrl，下面的action使用EL表达式取这个值，基础生疏反应缓慢，需要全面复习补充！！-->
         <input type="submit" value="Log out" />
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </div>
 </body>
 </html>
+<!--
+官网：
+When using the WebSecurityConfigurerAdapter, logout capabilities are automatically applied. The default is that accessing the URL /logout will log the user out by:
+
+Invalidating the HTTP Session
+Cleaning up any RememberMe authentication that was configured
+Clearing the SecurityContextHolder
+Redirect to /login?logout
+-->
