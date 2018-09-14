@@ -18,7 +18,7 @@
         Hello <b><c:out value="${pageContext.request.remoteUser}"/></b>
     </p>
     <c:url var="logoutUrl" value="/logout"/>
-    <form class="form-inline" action="${logoutUrl}" method="post">
+    <form class="form-inline" action="${logoutUrl}" method="post"><!-- 简单的jstl表达式，上面c:url标签将"/logout"赋值给jsp页面变量logoutUrl，下面的action使用EL表达式取这个值，基础生疏反应缓慢，需要全面复习补充！！-->
         <input type="submit" value="Log out" />
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
